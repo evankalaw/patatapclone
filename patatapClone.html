@@ -16,8 +16,23 @@
 		var random = Point.random();
 		//multiplying them together provides a random location for a newly generated shape
 		var location = max * random;
+
+		var newShape = new Path.Circle(location, 100);
+
+		newShape.fillColor = 'red'
 		
-		new Path.Circle(location, 50).fillColor = 'red';
+		generatedShapes.push(newShape);
+	}
+
+	function onFrame(event) {
+		for (var i = 0; i < generatedShapes.length; i++) {
+			generatedShapes[i].fillColor.hue += 1;
+			generatedShapes[i].scale(0.9);
+			if (generatedShapes[i].area < 1) {
+				generatedShapes[i].remove();
+				generatedShapes.splice(i, 1);
+			}
+		}
 	}
 
 	</script>
