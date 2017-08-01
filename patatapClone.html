@@ -5,8 +5,24 @@
 	<script type="text/javascript" src="paper-full.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script type="text/paperscript" canvas="patatapCanvas">
+
+	var generatedShapes = [];
+
+	function onKeyDown(event) {
+		//makes a "max point"
+		var max = new Point(view.size.width, view.size.height);
+		//random() generates a random point with x and y values between 0 and 1
+		var random = Point.random();
+		//multiplying them together provides a random location for a newly generated shape
+		var location = max * random;
+		
+		new Path.Circle(location, 50).fillColor = 'red';
+	}
+
+	</script>
 </head>
 <body>
-	<canvas id="patatapCanvas"></canvas>
+	<canvas id="patatapCanvas" resize></canvas>
 </body>
 </html>
